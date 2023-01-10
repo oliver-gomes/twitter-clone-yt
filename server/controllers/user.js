@@ -22,13 +22,12 @@ export const update = async (req, res, next) => {
           new: true,
         }
       );
-
       res.status(200).json(updatedUser);
     } catch (err) {
       next(err);
     }
   } else {
-    return next(handleError(403, "You can only update your own account"));
+    return next(createError(403, "You can update only your account"));
   }
 };
 export const deleteUser = async (req, res, next) => {
